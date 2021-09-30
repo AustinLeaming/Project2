@@ -15,11 +15,12 @@ var app = express();
 
 // connect to the MongoDB with mongoose
 require('./config/database');
-// configure Passport
+// config/Passport
 require('./config/passport');
 
-
-
+// declare routes
+var indexRouter = require('./routes/index')
+var riderRouter = require('./routes/home')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -30,9 +31,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 // mount the session middleware
 app.use(session({
-  secret: 'SEI Rocks!',
+  secret: 'Agent Orange',
   resave: false,
   saveUninitialized: true
 }));
@@ -49,12 +51,13 @@ app.use(function (req, res, next) {
 });
 
 // mount all routes with appropriate base paths
-app.use('/', indexRoutes);
+app.use('/', indexRouter);
+app.use('/', riderRouter)
 
 
 // invalid request, send 404 page
 app.use(function(req, res) {
-  res.status(404).send('Cant find that!');
+  res.status(404).send('Cant find that');
 });
 
 module.exports = app;

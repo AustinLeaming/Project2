@@ -2,6 +2,8 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 //Require your User Model here!
 
+const Rider = require('../models/rider')
+
 // configuring Passport!
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -11,7 +13,23 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, cb) {
     // a user has logged in via OAuth!
     // refer to the lesson plan from earlier today in order to set this up
-
+    Rider.findOne({ 'googleId': profile.id }, function(err, user) {
+      if (err) return cb(err);
+      if (user) {
+        return cb(null, user);
+      } else {
+        // we have a new USER student via OAuth!
+        var newUser = new Rider({
+          name: profile.displayName,
+          email: profile.emails[0].value,
+          googleId: profile.id
+        });
+        newUser.save(function(err) {
+          if (err) return cb(err);
+          return cb(null, newUser)
+        })
+      }
+    })
   }
 ));
 
@@ -25,7 +43,10 @@ passport.deserializeUser(function(id, done) {
   // When you call this done function passport assigns the user document to req.user, which will 
   // be availible in every Single controller function, so you always know the logged in user
 
+
+  Rider.findById(id, function(err, user){
+    done(err, user);
+  })
+
+
 });
-
-
-
