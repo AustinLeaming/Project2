@@ -1,6 +1,6 @@
 var router = require('express').Router();
-var riderCtrl = require('../controllers/rider');
+var homeCtrl = require('../controllers/home');
 
-router.get('/riders', riderCtrl.index)
+router.get('/home', homeCtrl.index)
 
 module.exports = router;

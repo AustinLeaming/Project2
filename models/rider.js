@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
+// all this does is allows us to ref Schema instead of mongoose.Schema
 const Schema = mongoose.Schema
 
-// Create your User Model
+// Create your User Model - "Rider"
 const riderSchema = new Schema({
     name: String,
     email: String,
-    // I would like trails to be in here, one user can have many trails riden
-    // I would like bikes to be in here, one user can have many bikes 
+    trails: [{}],
+    bikes: [{}],
+    post: [],
+    comment: [],
     googleId: String // <-- required for Oauth 
 })
 
