@@ -1,29 +1,7 @@
-.brand-logo {
-  margin-left: 15px;
-}
-
-.card .card-content .card-title {
-  margin-bottom: 10px;
-}
-
-#search-row form {
-  padding-top: 20px;
-}
-
-.student-name {
-  position: relative;
-  top: -5px;
-}
-
-.collection-item form {
-  margin-top: -5px;
-}
-
 /* Login page */
 
 #myVideo {
   position: fixed;
-  background: rgba(63, 62, 62, 0.418);
   right: 0;
   bottom: 0;
   min-width: 100%;
@@ -31,13 +9,35 @@
   filter: grayscale(25%);
 }
 
-.login-content {
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  position:fixed;
-  margin: 25%;
-  height: 150px;
-  width: 50%;
-  padding: 10px;
+#login-box {
+  position: absolute;
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0;
+  margin: auto;
+  height: 200px;
+  width: 500px;
+}
+
+#login-box > * {
+  text-align: center;
+}
+
+#login-banner {
+  font-size: 45px;
+  font: bold;
+}
+
+/* Navigation bar */
+
+
+
+/* Home Page */
+#fullscreen {
+  height: 100%;
+}
+
+#fullpage {
+  height: 100vh;
 }

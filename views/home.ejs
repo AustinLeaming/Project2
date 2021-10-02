@@ -13,30 +13,19 @@
 </head>
 
 <body>
-  <nav>
-    
-  </nav>
-  <!-- <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <% if (user) {%> 
-        <a href="" class="brand-logo left">Welcome, <%= user.name %> </a>
-        <% } else { %> 
-          <a href="" class="brand-logo left">Ride With Friends</a> 
-          <% } %> 
-        <ul class="right">
-          <li>
-            <% if (user) { %>
-              <a href="/logout">Log Out</a>
-            <% } else { %>
-              <a href="/auth/google"> Login with Google</a>
-            <% } %>       
-          </li>
-        </ul>
-      </div>
-    </nav>
+      <!-- Navbar -->
+<%- include('./partials/searchBar')  %> 
+
+<div class="row fullpage" id='page'>
+  <div class="col s3">
+    <nav class='orange'></nav>
   </div>
-  <div><% user %> </div> -->
+
+  <div id='feed' class="col s9">
+    <nav class='purple'>
+  </div>
+
+</div>
 </body>
 
 </html>

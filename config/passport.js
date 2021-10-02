@@ -47,6 +47,4 @@ passport.deserializeUser(function(id, done) {
   Rider.findById(id, function(err, user){
     done(err, user);
   })
-
-
 });
