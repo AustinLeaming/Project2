@@ -30,14 +30,61 @@
 }
 
 /* Navigation bar */
-
-
-
-/* Home Page */
-#fullscreen {
-  height: 100%;
+#navBar {
+  margin: auto;
 }
 
-#fullpage {
+#navbarcontainer {
+  padding: 0;
+}
+
+/* Search bar */
+#searchBarBox {
+  margin: 0;
+}
+
+#searchbar {
+  border: none;
+}
+
+/* Home Page */
+.full {
   height: 100vh;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Post box */
+#postboxcontainer {
+  display: grid;
+  margin-top: 20px;
+  height: 150px;
+  border: 1px solid red;
+  padding: 0;
+  grid-template-areas: 
+    "text submit"
+    "trail range";
+}
+
+#postform {
+  border: 1px solid red;
+}
+
+#posttext {
+  grid-area: text;
+}
+
+#submitpost {
+  grid-area: submit;
+}
+
+#trailselector {
+  grid-area: trail;
+}
+
+#postrange {
+  grid-area: range;
 }

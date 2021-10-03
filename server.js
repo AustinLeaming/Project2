@@ -22,6 +22,7 @@ require('./config/passport');
 var indexRouter = require('./routes/index')
 var loginRouter = require('./routes/login')
 var homeRouter = require('./routes/home')
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

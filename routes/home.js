@@ -3,4 +3,6 @@ var homeCtrl = require('../controllers/home');
 
 router.get('/home', homeCtrl.index)
 
+router.post('/home', homeCtrl.post)
+
 module.exports = router;

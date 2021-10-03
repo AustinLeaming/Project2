@@ -12,20 +12,34 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<body>
-      <!-- Navbar -->
-<%- include('./partials/searchBar')  %> 
+<!-- Page Layout here -->
+<body class='full'>
+  <div class='full row'>
+    <!-- side nav -->
+    <div  id='navbarcontainer' class='col s3'>
+      <%- include('./partials/nav') %>
+    </div>
+    <!-- Post box -->
+    <div class='full col s9 green'>
+      <form action='/home' method='POST'>
+        <div id='postboxcontainer' class='col s12'>
+          <input type="text" id='posttext' name='post'>
+          <button type="submit" id='submitpost'>submit</button>
+          <select id='trailselector' class='browser-default' name='trail'>
+            <option value="green">green</option>
+            <option value="red">red</option>
+            <option value="black">black</option>
+          </select>
+          <input type="number" id='postrange' name='range'>
+        </div>
+      </form>
+    </div>
+    <!-- Feed area -->
+    <div>
 
-<div class="row fullpage" id='page'>
-  <div class="col s3">
-    <nav class='orange'></nav>
+    </div>
   </div>
-
-  <div id='feed' class="col s9">
-    <nav class='purple'>
-  </div>
-
-</div>
 </body>
+
 
 </html>

@@ -1,7 +1,8 @@
 const Rider = require('../models/rider');
 
 module.exports = {
-    index
+    index,
+    post
 }
 
 function index(req, res, next) {
@@ -23,4 +24,9 @@ function index(req, res, next) {
       sortKey
     });
   });
+  }
+
+  function post(req, res, next){
+    console.log(req.body)
+    res.redirect('home')
   }
