@@ -31,10 +31,7 @@ const riderSchema = new Schema({
     trails: [trailSchema],
     bikes: [bikeSchema],
     posts: [postSchema],
-    comment: [],
     googleId: String // <-- required for Oauth 
 })
-
-
 
 module.exports = mongoose.model('Rider', riderSchema)
