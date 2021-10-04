@@ -88,3 +88,13 @@
 #postrange {
   grid-area: range;
 }
+
+/* Feed area */
+#scrollFeed {
+  overflow: auto;
+}
+
+#post {
+  position: static;
+  height: 100px;
+}

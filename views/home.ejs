@@ -20,7 +20,7 @@
       <%- include('./partials/nav') %>
     </div>
     <!-- post area -->
-    <div class='full col s9 green'>
+    <div id='scrollFeed' class='full col s9 green'>
       <form action='/home' method='POST'>
         <div id='postboxcontainer' class='col s12'>
           <input type="text" id='posttext' name='text'>
@@ -33,10 +33,30 @@
           <input type="number" id='postrange' name='range'>
         </div>
       </form>
-    </div>
-    <!-- feed area -->
-    <div class='full col s9 green'>
+      <!-- feed area -->
+      <% riders.forEach(function(rider) { %> 
+          <% rider.posts.forEach(function(post) { %> 
+            <div id='post' class='col s12'>
+            <%= rider.name %> 
+            <%= post.text %>
+            <%= post.trail %>
+            <%= post.range %> 
+          </div>
+          <% })  %> 
+      <% }) %> 
 
+      <!-- <div id='feed-container' class='col s12'>
+      <% riders.forEach(function(rider) { %> 
+        <div id='post' class='col s12'>
+        <% rider.posts.forEach(function(post) { %> 
+              <%= rider.name  %>
+              <%= post.text %>
+              <%= post.range  %>
+              <%= post.trail %>  
+            </div> 
+              <% }) %> 
+        <% }) %> 
+      </div> -->
     </div>
   </div>
 </body>
