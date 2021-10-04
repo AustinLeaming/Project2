@@ -1,15 +1,16 @@
 const Rider = require('../models/rider');
 
+let currentUser = null;
+
 module.exports = {
     index,
-    post
+    create
 }
 
 function index(req, res, next) {
   console.log(req.query)
   console.log(req.user)
-  // Make the query object to use with Student.find based up
-  // the user has submitted the search form or now
+  let currentUser = req.user;
   let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
   // Default to sorting by name
   let sortKey = req.query.sort || 'name';
@@ -24,9 +25,10 @@ function index(req, res, next) {
       sortKey
     });
   });
-  }
+}
 
-  function post(req, res, next){
-    console.log(req.body)
-    res.redirect('home')
-  }
+function create(req,res, next) {
+  console.log(req.body, '<- body', res.locals.user, '<-user')
+  res.locals.user.posts.push(req.body);
+  console.log(res.locals.user, 'updated rider')
+}
