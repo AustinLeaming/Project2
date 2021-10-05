@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Materialize CSS Framework -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="stylesheets/style.css" />
+  <link rel="stylesheet" href="../stylesheets/style.css" />
   <!-- JavaScript for Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -21,28 +21,19 @@
     </div>
     <!-- post area -->
     <div id='scrollFeed' class='full col s9 green'>
-      <h2>Home Page</h2>
+      <form action='/home' method='POST'>
+        <div id='postboxcontainer' class='col s12'>
+          <input type="text" id='posttext' name='text'>
+          <button type="submit" id='submitpost'>submit</button>
+          <select id='trailselector' class='browser-default' name='trail'>
+            <option value="green">green</option>
+            <option value="red">red</option>
+            <option value="black">black</option>
+          </select>
+          <input type="number" id='postrange' name='range'>
+        </div>
+      </form>
       <!-- feed area -->
-      <% riders.forEach(function(rider) { %> 
-            <div id='post' class='col s12'>
-            <%= rider.name %> 
-            <p>Trails completed: <%= rider.posts.length %> </p>
-            <p>To see details of this rider, <a href="/home/<%= rider._id%>" >click here:</a></p>
-          </div>
-      <% }) %> 
-
-      <!-- <div id='feed-container' class='col s12'>
-      <% riders.forEach(function(rider) { %> 
-        <div id='post' class='col s12'>
-        <% rider.posts.forEach(function(post) { %> 
-              <%= rider.name  %>
-              <%= post.text %>
-              <%= post.range  %>
-              <%= post.trail %>  
-            </div> 
-              <% }) %> 
-        <% }) %> 
-      </div> -->
     </div>
   </div>
 </body>

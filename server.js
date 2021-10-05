@@ -22,6 +22,7 @@ require('./config/passport');
 var indexRouter = require('./routes/index')
 var loginRouter = require('./routes/login')
 var homeRouter = require('./routes/home')
+var newRouter = require('./routes/new')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,15 +49,17 @@ app.use(passport.session());
 // Add this middleware BELOW passport middleware
 app.use(function (req, res, next) {
   res.locals.user = req.user; // assinging a property to res.locals, makes that said property (user) availiable in every
-  console.log(res.locals.user, '<- this is my user')
+  // console.log(res.locals.user, '<- this is my user')
   // single ejs view
   next();
 });
 
 // mount all routes with appropriate base paths
 app.use('/', indexRouter);
+app.use('/home', homeRouter);
+app.use('/new-ride', newRouter)
 app.use('/', loginRouter);
-app.use('/', homeRouter);
+
 
 
 // invalid request, send 404 page

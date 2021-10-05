@@ -2,23 +2,16 @@ const mongoose = require('mongoose');
 // all this does is allows us to ref Schema instead of mongoose.Schema
 const Schema = mongoose.Schema
 
-const commentSchema = new Schema({
-    text: String,
-    username: String
-})
-
 const postSchema = new Schema({
     trail: String,
     range: Number,
     text: String,
-    comments: [commentSchema]
 })
 
 const trailSchema = new Schema({
     location: String
 })
 
-// riders will 
 const bikeSchema = new Schema({
     make: String,
     model: String

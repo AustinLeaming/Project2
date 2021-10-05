@@ -1,7 +1,9 @@
 <nav id='navBar' class='full blue lighten-2'>
     <a href='/home'>Home</a>
     <br>
-    <a href='/profile'>Profile</a>
+    <a href="/home/<%= user._id%>">Profile</a>
+    <br>
+    <a href="/home/new-ride">Add A Ride</a>
     <br>
     <p>Welcome, <%= user ? user.name : 'no user' %></p>
     <a href='/logout' class='logout'>Log out</a>

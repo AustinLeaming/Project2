@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Materialize CSS Framework -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="stylesheets/style.css" />
+  <link rel="stylesheet" href="../stylesheets/style.css" />
   <!-- JavaScript for Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -19,9 +19,9 @@
     <div  id='navbarcontainer' class='col s3'>
       <%- include('./partials/nav') %>
     </div>
-    <!-- Post box -->
-    <div class='full col s9 green'>
-      <form action='/new' method='POST'>
+    <!-- post area -->
+    <div id='scrollFeed' class='full col s9 green'>
+      <form action='/home' method='POST'>
         <div id='postboxcontainer' class='col s12'>
           <input type="text" id='posttext' name='text'>
           <button type="submit" id='submitpost'>submit</button>
@@ -33,10 +33,30 @@
           <input type="number" id='postrange' name='range'>
         </div>
       </form>
-    </div>
-    <!-- Feed area -->
-    <div>
+      <!-- feed area -->
+      <% riders.forEach(function(rider) { %> 
+          <% rider.posts.forEach(function(post) { %> 
+            <div id='post' class='col s12'>
+            <%= rider.name %> 
+            <%= post.text %>
+            <%= post.trail %>
+            <%= post.range %> 
+          </div>
+          <% })  %> 
+      <% }) %> 
 
+      <!-- <div id='feed-container' class='col s12'>
+      <% riders.forEach(function(rider) { %> 
+        <div id='post' class='col s12'>
+        <% rider.posts.forEach(function(post) { %> 
+              <%= rider.name  %>
+              <%= post.text %>
+              <%= post.range  %>
+              <%= post.trail %>  
+            </div> 
+              <% }) %> 
+        <% }) %> 
+      </div> -->
     </div>
   </div>
 </body>

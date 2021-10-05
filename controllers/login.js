@@ -5,8 +5,6 @@ module.exports = {
 }
 
 function index(req, res, next) {
-    console.log(req.query)
-    console.log(req.user)
     // Make the query object to use with Student.find based up
     // the user has submitted the search form or now
     let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
