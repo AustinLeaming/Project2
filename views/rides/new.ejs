@@ -16,23 +16,40 @@
 <body class='full'>
   <div class='full row'>
     <!-- side nav -->
-    <div  id='navbarcontainer' class='col s3'>
+    <div  id='navbarcontainer' class='col s2'>
       <%- include('../partials/nav') %>
     </div>
     <!-- post area -->
-    <div id='scrollFeed' class='full col s9 green'>
-      <form action='/rides/' method='POST'>
-        <div id='postboxcontainer' class='col s12'>
-          <input type="text" id='posttext' name='text'>
-          <button type="submit" id='submitpost'>submit</button>
-          <select id='trailselector' class='browser-default' name='trail'>
-            <option value="green">green</option>
-            <option value="red">red</option>
-            <option value="black">black</option>
-          </select>
-          <input type="number" id='postrange' name='range'>
+    <div id='postBoxContainer' class='full col s10 grey lighten-2'>
+        <div class="card">
+          <div class="card-image">
+            <img id='postBoxBG'src='../postBoxBG.jpeg'>
+            <h1 class="card-title">Get out there and ride!</h1>
+          </div>
+          <div id='postForm' class="card-content">
+            <form action='/rides' method='POST'>
+              <label>How did it go?</label>
+              <input type="text" placeholder="It was awesome! Watch out on the second turn though, there's some mud - SEND IT">
+              <div class='col s12 m6'>
+                <label>What trail did you ride?</label>
+                  <select class='browser-default col s12 m6' name="trails" id="trails">
+                    <option value="boulderCanyonTrail">Boulder Canyon Trai</option>
+                    <option value="valmontBikePark">Valmont Bike Park</option>
+                  </select>
+              </div>
+              <div class='col s12 m6'>
+                <label>How far did you go?</label>
+                  <input type="number" placeholder="Enter range in miles">
+              </div>
+              <div class="card-action">
+                <a href="/" class='waves-effect waves-light btn blue-grey lighten-1'>Submit</a>
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
+      <!-- <form action='/rides' method='POST'>
+
+      </form> -->
       <!-- feed area -->
     </div>
   </div>

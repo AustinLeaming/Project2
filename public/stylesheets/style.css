@@ -30,8 +30,14 @@
 }
 
 /* Navigation bar */
+#userTitle {
+  margin: 0;
+}
+
 #navBar {
   margin: auto;
+  align-content: center;
+  border-right: solid 1px white;
 }
 
 #navbarcontainer {
@@ -58,36 +64,13 @@
 }
 
 /* Post box */
-#postboxcontainer {
-  display: grid;
-  margin-top: 20px;
-  height: 150px;
-  border: 1px solid red;
-  padding: 0;
-  grid-template-areas: 
-    "text submit"
-    "trail range";
-}
+#postBox{
+  margin: 50px 30px;
+  height: 100%;
+  width: 100%;
+  border: red 1px solid;
+ }
 
-#postform {
-  border: 1px solid red;
-}
-
-#posttext {
-  grid-area: text;
-}
-
-#submitpost {
-  grid-area: submit;
-}
-
-#trailselector {
-  grid-area: trail;
-}
-
-#postrange {
-  grid-area: range;
-}
 
 /* Feed area */
 #scrollFeed {
