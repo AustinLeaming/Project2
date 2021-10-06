@@ -2,7 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 //Require your User Model here!
 
-const Rider = require('../models/rider')
+const User = require('../models/user')
 
 // configuring Passport!
 passport.use(new GoogleStrategy({
@@ -13,13 +13,13 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, cb) {
     // a user has logged in via OAuth!
     // refer to the lesson plan from earlier today in order to set this up
-    Rider.findOne({ 'googleId': profile.id }, function(err, user) {
+    User.findOne({ 'googleId': profile.id }, function(err, user) {
       if (err) return cb(err);
       if (user) {
         return cb(null, user);
       } else {
         // we have a new USER student via OAuth!
-        var newUser = new Rider({
+        var newUser = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
           googleId: profile.id
