@@ -44,7 +44,7 @@ passport.deserializeUser(function(id, done) {
   // be availible in every Single controller function, so you always know the logged in user
 
 
-  Rider.findById(id, function(err, user){
+  User.findById(id, function(err, user){
     done(err, user);
   })
 });

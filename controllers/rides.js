@@ -4,9 +4,9 @@ const Ride = require('../models/rides');
 
 module.exports = {
     index,
-    allRides,
-    show,
-    newRide,
+    showAll,
+    showOne,
+    new: newRide,
     create,
     edit,
     update,
@@ -15,39 +15,59 @@ module.exports = {
 
 // render the logged in users rides
 // needs a view
-// im @ localhost:3000/rides
-function index(req,res){
-    console.log('index')
-}
+// i happen @ localhost:3000/rides
+// I pulled this function directly from the passport-boilerplate in SEI-WEST-COAST-8-30/work/w05/d3
+function index(req, res, next) {
+    console.log(req.query)
+    console.log(req.user, '<-- this is my logged in user', '<-- im inside of controllers/riders/index')
+    // Make the query object to use with Student.find based up
+    // the user has submitted the search form or now
+    let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
+    // Default to sorting by name
+    let sortKey = req.query.sort || 'name';
+    User.find(modelQuery)
+    .sort(sortKey).exec(function(err, users) {
+      if (err) return next(err);
+      // Passing search values, name & sortKey, for use in the EJS
+      res.render('rides/index', {
+        users,
+        user: req.user,
+        name: req.query.name,
+        sortKey
+      });
+    });
+  }
 
 // render all the users rides
 // needs a view 
-// im @ localhost:3000/rides/all
-function allRides(req,res){
+// i happen @ localhost:3000/rides/all
+function showAll(req,res){
     console.log('show')
 }
 
 // render one specific ride, we want to do add a comment to it 
 // needs a view 
-// im @ localhost:3000/rides/:id
-function show(req,res){
-    console.log('show')
+// i happen @ localhost:3000/rides/:id
+function showOne(req,res){
+    console.log('showOne', 'controller, rides, showOne?? why')
 }
 
 // render a new page for a user to submit a ride 
 // needs a view 
-// im @ localhost:3000/rides/new
+// i happen localhost:3000/rides/new
 function newRide(req,res){
-    console.log('newRide')
+    res.render('rides/new')
 }
 
-// handles the above function form being submitted, no view needed
+// handles the above function form being submitted 
+// no view needed but redirect to localhost:3000/rides - we want to see the new post on my page
 function create(req,res){
     console.log('create')
 }
 
-// render an edit page, I want to 
-// needs a view @ localhost:3000/rides/edit
+// render an edit page, I want to edit it, or remove it 
+// needs a view 
+// i happen @ localhost:3000/rides/edit
 function edit(req,res){
     console.log('edit')
 }

@@ -9,11 +9,12 @@ router.get('/', ridesCtrl.index)
 // take me to the posts everyone has made, let me see them
 router.get('/all', ridesCtrl.showAll)
 
-// take me to the ride I just clicked on, all I want to see is this one ride - I wanna do stuff to it 
-router.get('/:id', ridesCtrl.show)
-
 // take me to the form to submit a ride
+// listen for get req on localhost:3000/rides/newRide
 router.get('/new', ridesCtrl.new)
+
+// take me to the ride I just clicked on, all I want to see is this one ride - I wanna see the comments on it 
+router.get('/:id', ridesCtrl.showOne)
 
 // handle the new ride (form) I just submitted
 router.post('/', ridesCtrl.create)
@@ -25,6 +26,6 @@ router.get('/:id/edit', ridesCtrl.edit)
 router.put('/:id', ridesCtrl.update)
 
 // delete the ride I clicked on just two steps above
-router.delete('/:id', ridesCtrl.delete)
+router.delete('/:id', ridesCtrl.deleteRide)
 
 module.exports = router;

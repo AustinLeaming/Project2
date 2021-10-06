@@ -17,11 +17,11 @@
   <div class='full row'>
     <!-- side nav -->
     <div  id='navbarcontainer' class='col s3'>
-      <%- include('./partials/nav') %>
+      <%- include('../partials/nav') %>
     </div>
     <!-- post area -->
     <div id='scrollFeed' class='full col s9 green'>
-      <form action='/home' method='POST'>
+      <form action='/rides/' method='POST'>
         <div id='postboxcontainer' class='col s12'>
           <input type="text" id='posttext' name='text'>
           <button type="submit" id='submitpost'>submit</button>

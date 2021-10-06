@@ -1,4 +1,4 @@
-const Rider = require('../models/rider');
+const User = require('../models/user');
 
 module.exports = {
     show
@@ -6,7 +6,7 @@ module.exports = {
 
 function show(req,res){
   // this function shows all the riders posts 
-  Post.find({rider: req.params.id}, callbackFunc)
+  Post.find({user: req.params.id}, callbackFunc)
   // Rider.findById(req.params.id).exec(function (err,r) {
   //   // console.log(r, '<--- rider')
   //   // ^^^^^^ REMOVE AFTER TESTING 
