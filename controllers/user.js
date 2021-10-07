@@ -13,25 +13,3 @@ function show(req,res){
   //   res.render('show', {r})
   })
 }
-
-
-//move to post controller newride, createpost, deletepost
-
-// function newRide(req,res){
-//   res.render('new')
-// }
-
-// function createPost(req,res, next) {
-//   console.log(req.user, '<-- user making the post ')
-//   console.log(req.body, '<-- information inside of the post')
-  
-// }
-
-// function deletePost(req,res){
-//   console.log(req.params.id, '<---- post that needs to be deleted from rider profile')
-
-//   // console.log(Rider.posts(req.params.id), '<---- post inside the rider model????')
-//   Rider.
-
-//   res.redirect('/home')
-// }

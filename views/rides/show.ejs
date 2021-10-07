@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Biking With Friends</title>
+  <!-- Google Icon Fonts used by Materialize -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../stylesheets/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<!-- Page Layout here -->
+<body class='full'>
+<div class='full row'>
+    <!-- side nav -->
+    <div  id='navbarcontainer' class='col s2'>
+      <%- include('../partials/nav') %>
+    </div>
+    <!-- post area -->
+    <div id='scrollFeed' class='full col s10 grey lighten-2'>
+        <div class="row">
+            <div class='col s12'>
+                <div class="card blue-grey lighten-1">
+                    <div class='card-image'>
+                        <img src='../postBoxBG.jpeg'>
+                        <span class="card-title"><%= ride.trail %> </span>
+                    </div>
+                    <div class="card-content white-text">
+                        <span class="card-title">User - <%= ride.user %> </span>
+                        <p><%= ride.text  %></p>
+                    </div>
+                    <div class="card-action">
+                    <!-- comments section  -->
+                    <form action="/rides/<%= ride._id %>/comments" method='POST'>
+                        <input name='content' type="text" class='white-text' placeholder="Say something nice!">
+                        <input type="submit">
+                    </form>
+                    <ul class='collection'>
+                        <% ride.comments.forEach(function(comment){ %> 
+                            <li class='collection-item'>
+                                <!--  if (comment.userId.equals(user._id)) { %>  -->
+                                <form action="/comments/<%= comment._id %>?_method=DELETE" method='POST'>
+                                    <button type='submit' class='secondary-content btn-small'><i class='material-icons'>delete</i></button>
+                                </form>
+                                <!--  } %>  -->
+                                <p><%= comment.content %> </p>
+                            </li>
+                        <% }) %> 
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>

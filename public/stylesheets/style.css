@@ -35,9 +35,13 @@
 }
 
 #navBar {
-  margin: auto;
-  align-content: center;
-  border-right: solid 1px white;
+  position: relative;
+}
+
+#logout {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 #navbarcontainer {
@@ -71,7 +75,9 @@
   border: red 1px solid;
  }
 
-
+#postForm {
+  height:250px;
+}
 /* Feed area */
 #scrollFeed {
   overflow: auto;
@@ -82,4 +88,11 @@
   height: 100px;
 }
 
-/* Profile page */
+/* single page post */
+#singlePagePost {
+  margin: 10px;
+}
+
+.input-field label {
+  color: #000;
+}

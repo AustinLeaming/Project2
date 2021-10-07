@@ -1,11 +1,11 @@
-<nav id='navBar' class='full grey darken-2'>
+<nav id='navBar' class='full blue-grey lighten-1'>
     <h3 id='userTitle'>Welcome, <%= user ? user.name : 'no user' %></h3>
     <br>
-    <a href='/rides/all' class='waves-effect waves-light btn blue-grey lighten-1'>All Posts</a>
-    <br>
-    <a href="/home/<%= user._id%>" class='waves-effect waves-light btn blue-grey lighten-1'>Profile</a>
-    <br>
-    <a href="/rides/new" class='waves-effect waves-light btn blue-grey lighten-1'>Add A Ride</a>
-    <br>
-    <a href='/logout' class='waves-effect waves-light btn logout blue-grey lighten-1'>Log out</a>
+    <div class='collection'>
+        <a href='/rides/all' class='collection-item black-text'>All Rides</a>
+        <a href='/rides/new' class='collection-item black-text'>Post A Ride</a>
+    </div>
+    <div id='logout' class='collection'>
+        <a href='/logout' class='collection-item black-text'>Logout</a>
+    </div>
 </nav>

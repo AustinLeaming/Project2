@@ -9,8 +9,8 @@ module.exports = {
     showOne,
     new: newRide,
     create,
-    edit,
     update,
+    edit: editRide,
     deleteRide
 }
 
@@ -41,12 +41,12 @@ function index(req, res, next) {
 
 // render all the users rides
 // needs a view 
-// i happen @ localhost:3000/rides/all
+// i happen @ localhost:3000/rides/index
 function showAll(req,res){
-    console.log('show function')
+    console.log('<---showAll')
     let rideQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
     Ride.find(rideQuery, function (err, rides) {
-        res.render('rides/all', {
+        res.render('rides/index', {
             rides,
             user: req.user,
             nameSearch: req.query.name
@@ -54,11 +54,33 @@ function showAll(req,res){
     })
 }
 
+async function editRide(req,res){
+    console.log(req.params.id, '<---- edit')
+    try {
+        rideDoc = await Ride.findById(req.params.id)
+        res.render('rides/edit', {
+            ride: rideDoc
+        })
+    } catch(err){
+        res.send(err)
+    }
+}
+
 // render one specific ride, we want to do add a comment to it 
 // needs a view 
 // i happen @ localhost:3000/rides/:id
-function showOne(req,res){
-    console.log('showOne')
+async function showOne(req,res){
+    // i need the id of the ride the user just clicked on
+    // i need to take them to the show page of JUST that ride
+    console.log(req.params.id, '<---- showOne')
+    try {
+        rideDoc = await Ride.findById(req.params.id)
+        res.render('rides/show', {
+            ride: rideDoc
+        })
+    } catch(err){
+        res.send(err)
+    }
 }
 
 // render a new page for a user to submit a ride 
@@ -80,15 +102,7 @@ function create(req,res){
     ride.save(function(err) {
         if (err) return render('rides')
     })
-    res.redirect('rides/all')
-    
-}
-
-// render an edit page, I want to edit it, or remove it 
-// needs a view 
-// i happen @ localhost:3000/rides/edit
-function edit(req,res){
-    console.log('edit')
+    res.redirect('/rides/all')
 }
 
 // handles the above function form being submitted - edits the ride
@@ -98,5 +112,8 @@ function update(req,res){
 
 // handles the delete button in the edit view 
 function deleteRide(req,res){
-    console.log('delete')
+    console.log('delete function called')
+    Ride.findByIdAndDelete(req.params.id).exec(function(err, ride){
+        res.redirect('/rides/all')
+    })
 }

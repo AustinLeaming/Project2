@@ -22,6 +22,7 @@ require('./config/passport');
 var indexRouter = require('./routes/index')
 var loginRouter = require('./routes/login')
 var ridesRouter = require('./routes/rides')
+var commentsRouter = require('./routes/comments');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,6 +56,7 @@ app.use(function (req, res, next) {
 // mount all routes with appropriate base paths
 app.use('/', indexRouter);
 app.use('/rides', ridesRouter);
+app.use('/', commentsRouter);
 app.use('/', loginRouter);
 
 

@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Materialize CSS Framework -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
   <!-- JavaScript for Materialize -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
@@ -20,29 +20,29 @@
       <%- include('../partials/nav') %>
     </div>
     <!-- post area -->
-    <div id='scrollFeed' class='full col s10 grey lighten-2'>
-      <h2>All Rides</h2>
-      <!-- feed area -->
-        <% rides.forEach(function(ride) {%> 
+    <div id='postBoxContainer' class='full col s10 grey lighten-2'>
+        <div class='full col s10 grey lighten-2'>
             <div class="row">
-                <div class="col s12">
-                    <div class="card blue-grey darken-1">
+                <div class='col s12'>
+                    <div class="card blue-grey lighten-1">
                         <div class='card-image'>
-                            <img src='../postBoxBG.jpeg'>
-                            <span class="card-title"><%= ride.user %> </span>
+                            <img src='../../postBoxBG.jpeg'>
+                            <span class="card-title"><%= ride.trail %> </span>
                         </div>
                         <div class="card-content white-text">
-                            <span class="card-title"><%= ride.trail %> </span>
+                            <span class="card-title">User - <%= ride.user %> </span>
                             <p><%= ride.text  %></p>
+                            <form action="/<%= ride._id %>?_method=DELETE" method="POST" class="secondary-content">
+                                <button type='submit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></button>
+                            </form>
                         </div>
-                    <div class="card-action">
-                        <a href="#">Go to comments</a>
-                    </div>
+                        <div class="card-action">
+                        <!-- comments go here  -->
+                        </div>
                     </div>
                 </div>
-                </div>
-        <% }) %>
-      </div>
+            </div>
+        </div>
     </div>
   </div>
 </body>

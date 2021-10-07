@@ -12,18 +12,49 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<!-- Page Layout -->
+<!-- Page Layout here -->
 <body class='full'>
   <div class='full row'>
     <!-- side nav -->
     <div  id='navbarcontainer' class='col s2'>
       <%- include('../partials/nav') %>
     </div>
-        <!-- feed area -->
-        <div id='scrollFeed' class='full col s10 grey lighten-2'>
-        <h2> USER PROFILE PAGE</h2>
-        </div>
+    <!-- post area -->
+    <div id='scrollFeed' class='full col s10 grey lighten-2'>
+      <!-- feed area -->
+        <% rides.forEach(function(ride) {%> 
+            <div class="row">
+                <div class="col s12">
+                    <div class="card blue-grey lighten-1">
+                        <!-- Background pic for posts -->
+                        <div class='card-image'>
+                            <img src='../postBoxBG.jpeg'>
+                            <span class="card-title"><%= ride.user %> </span>
+                        </div>
+                        
+                        <!-- Content of the post -->
+                        <div class="card-content white-text">
+                            <% if (ride.user.equals(user._id)) { %>
+                              <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" class="secondary-content">
+                                <button type='submit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></button>
+                              </form>
+                                <a href='<%= ride._id %>/edit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class='material-icons tiny'>edit</i></a>  
+                            <% } %>
+                            <span class="card-title">Trail: <%= ride.trail %> - <%= ride.range %> miles </span>
+                            <p><%= ride.text  %></p>
+                            
+                        </div>
+                        <!-- link to comment section -->
+                        <div class="card-action">
+                            <a href="<%= ride._id %>">Go to comments</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+      </div>
     </div>
+  </div>
 </body>
 
 
