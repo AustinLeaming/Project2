@@ -102,11 +102,11 @@ function create(req,res){
 }
 
 // handles the above function form being submitted - edits the ride
-function update(req,res){
+async function update(req,res){
     console.log('update function called')
-    Ride.findByIdAndUpdate(req.params.id,(function(err, ride){
-        console.log(ride)
-    }))
+    console.log(req.body, '<-- form being updated')
+    const updatedRide = await Ride.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    console.log(updatedRide)
     res.redirect('/rides/all')
 }
 
