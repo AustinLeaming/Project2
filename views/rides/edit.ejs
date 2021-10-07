@@ -21,28 +21,33 @@
     </div>
     <!-- post area -->
     <div id='postBoxContainer' class='full col s10 grey lighten-2'>
-        <div class='full col s10 grey lighten-2'>
-            <div class="row">
-                <div class='col s12'>
-                    <div class="card blue-grey lighten-1">
-                        <div class='card-image'>
-                            <img src='../../postBoxBG.jpeg'>
-                            <span class="card-title"><%= ride.trail %> </span>
-                        </div>
-                        <div class="card-content white-text">
-                            <span class="card-title">User - <%= ride.user %> </span>
-                            <p><%= ride.text  %></p>
-                            <form action="/<%= ride._id %>?_method=DELETE" method="POST" class="secondary-content">
-                                <button type='submit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></button>
-                            </form>
-                        </div>
-                        <div class="card-action">
-                        <!-- comments go here  -->
-                        </div>
+
+                <div class="card">
+                    <div class='card-image'>
+                        <img src='../../images/postBoxBG.jpeg'>
+                        <span class="card-title">Edit your ride</span>
+                    </div>
+                    <div id='postForm' class="card-content white-text">
+                        <form action='/rides/<%= ride._id %>?_method=PUT' method='POST'>
+                            <label>Update the content:</label>
+                            <input type="text" placeholder="<%= ride.text %> " name='text'>
+                            <label class='col s12 m6' for='trails'>Update the trail you rode:</label>
+                            <label calss='col s12 m4'>Update your range: (in miles)</label>
+                                <select class='browser-default col s12 m6' name="trail" id="trails">
+                                <option value="none" selected disabled hidden>
+                                    <%= ride.trail %> 
+                                </option>
+                                <option value="Boulder Canyon Trail">Boulder Canyon Trail</option>
+                                <option value="Valmont Bike Park">Valmont Bike Park</option>
+                                <option value="Bobolink Trail">Bobolink Trail</option>
+                                <option value="Cottonwood Trail">Cottonwood Trail</option>
+                                </select>
+                            <input class='col s12 offset-s6 m6' type="number" placeholder="<%= ride.range %> " name='range'>
+                            <button type='submit' class='waves-effect waves-light btn blue-grey lighten-1 col s12'>Submit</button>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </div>
+
     </div>
   </div>
 </body>

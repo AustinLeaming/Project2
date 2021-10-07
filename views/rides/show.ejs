@@ -33,23 +33,23 @@
                         <p><%= ride.text  %></p>
                     </div>
                     <div class="card-action">
-                    <!-- comments section  -->
-                    <form action="/rides/<%= ride._id %>/comments" method='POST'>
-                        <input name='content' type="text" class='white-text' placeholder="Say something nice!">
-                        <input type="submit">
-                    </form>
-                    <ul class='collection'>
-                        <% ride.comments.forEach(function(comment){ %> 
-                            <li class='collection-item'>
-                                <!--  if (comment.userId.equals(user._id)) { %>  -->
-                                <form action="/comments/<%= comment._id %>?_method=DELETE" method='POST'>
-                                    <button type='submit' class='secondary-content btn-small'><i class='material-icons'>delete</i></button>
-                                </form>
-                                <!--  } %>  -->
-                                <p><%= comment.content %> </p>
-                            </li>
-                        <% }) %> 
-                    </ul>
+                        <!-- comments section  -->
+                        <form action="/rides/<%= ride._id %>/comments" method='POST'>
+                            <input name='content' type="text" class='white-text' placeholder="Say something nice!">
+                            <input type="submit">
+                        </form>
+                        <ul class='collection'>
+                            <% ride.comments.forEach(function(comment){ %> 
+                                <li class='collection-item'>
+                                    <!--  if (comment.userId.equals(user._id)) { %>  -->
+                                    <form action="/comments/<%= comment._id %>?_method=DELETE" method='POST'>
+                                        <button type='submit' class='secondary-content btn-small'><i class='material-icons'>delete</i></button>
+                                    </form>
+                                    <!--  } %>  -->
+                                    <p>User: <%= comment.user %> - <%= comment.content %> </p>
+                                </li>
+                            <% }) %> 
+                        </ul>
                     </div>
                 </div>
             </div>

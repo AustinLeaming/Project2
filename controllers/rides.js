@@ -93,10 +93,6 @@ function newRide(req,res){
 // handles the above function form being submitted 
 // no view needed but redirect to localhost:3000/rides - we want to see the new post on my page
 function create(req,res){
-    console.log('create function inside the rides controller')
-    console.log(req.body, '<-- form being submitted')
-    console.log(req.user, '<-- user submitting the form')
-
     const ride = new Ride(req.body);
     ride.user = req.user._id;
     ride.save(function(err) {
@@ -107,13 +103,16 @@ function create(req,res){
 
 // handles the above function form being submitted - edits the ride
 function update(req,res){
-    console.log('update')
+    console.log('update function called')
+    Ride.findByIdAndUpdate(req.params.id,(function(err, ride){
+        console.log(ride)
+    }))
+    res.redirect('/rides/all')
 }
 
 // handles the delete button in the edit view 
 function deleteRide(req,res){
     console.log('delete function called')
-    Ride.findByIdAndDelete(req.params.id).exec(function(err, ride){
-        res.redirect('/rides/all')
-    })
+    Ride.findByIdAndDelete(req.params.id)
+    res.redirect('/rides/all')
 }
