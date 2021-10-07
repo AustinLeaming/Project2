@@ -113,6 +113,12 @@ async function update(req,res){
 // handles the delete button in the edit view 
 function deleteRide(req,res){
     console.log('delete function called')
-    Ride.findByIdAndDelete(req.params.id)
-    res.redirect('/rides/all')
+    Ride.findByIdAndDelete(req.params.id, function(err, ride){
+        if (err){
+            console.log(err)
+        } else {
+            console.log(ride)
+        }
+        res.redirect('/rides/all')
+    })
 }

@@ -35,8 +35,8 @@
                         <!-- Content of the post -->
                         <div class="card-content white-text">
                             <% if (ride.user.equals(user._id)) { %>
-                              <form action="/rides/<%= ride._id %>?_method=DELETE" method="POST" class="secondary-content">
-                                <button type='submit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></button>
+                              <form action="/rides/<%=ride._id%>?_method=DELETE" method="POST" class="secondary-content">
+                              <button type='submit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class="material-icons">delete</i></button>
                               </form>
                                 <a href='<%= ride._id %>/edit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class='material-icons tiny'>edit</i></a>  
                             <% } %>
