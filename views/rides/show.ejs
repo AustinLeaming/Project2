@@ -26,10 +26,9 @@
                 <div class="card blue-grey lighten-1">
                     <div class='card-image'>
                         <img src='../images/postBoxBG.jpeg'>
-                        <span class="card-title"><%= ride.trail %> </span>
                     </div>
                     <div class="card-content white-text">
-                        <span class="card-title">User - <%= ride.user %> </span>
+                        <span class="card-title"><%= ride.trail %></span>
                         <p><%= ride.text  %></p>
                     </div>
                     <div class="card-action">
@@ -46,7 +45,7 @@
                                         <button type='submit' class='secondary-content btn-small'><i class='material-icons'>delete</i></button>
                                     </form>
                                     <!--  } %>  -->
-                                    <p>User: <%= comment.user %> - <%= comment.content %> </p>
+                                    <p><%= comment.content %></p>
                                 </li>
                             <% }) %> 
                         </ul>

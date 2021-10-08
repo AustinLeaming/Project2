@@ -29,7 +29,7 @@
                         <!-- Background pic for posts -->
                         <div class='card-image'>
                             <img src='../images/postBoxBG.jpeg'>
-                            <span class="card-title"><%= ride.user %> </span>
+                            <span class="card-title"><%= ride.user.name %>'s Trail Review </span>
                         </div>
                         
                         <!-- Content of the post -->
@@ -41,12 +41,12 @@
                                 <a href='<%= ride._id %>/edit' class="btn-floating btn-medium waves-effect waves-light red secondary-content"><i class='material-icons tiny'>edit</i></a>  
                             <% } %>
                             <span class="card-title">Trail: <%= ride.trail %> - <%= ride.range %> miles </span>
-                            <p><%= ride.text  %></p>
+                            <p><%= ride.text %></p>
                             
                         </div>
                         <!-- link to comment section -->
                         <div class="card-action">
-                            <a href="<%= ride._id %>">Go to comments</a>
+                            <a href="<%= ride._id %>">Go to comments... (<%= ride.comments.length %>)</a>
                         </div>
                     </div>
                 </div>

@@ -43,15 +43,15 @@ function index(req, res, next) {
 // needs a view 
 // i happen @ localhost:3000/rides/index
 function showAll(req,res){
-    console.log('<---showAll')
     let rideQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
     Ride.find(rideQuery, function (err, rides) {
+        console.log(rides);
         res.render('rides/index', {
             rides,
             user: req.user,
             nameSearch: req.query.name
         })
-    })
+    }).populate('user')
 }
 
 async function editRide(req,res){
