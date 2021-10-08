@@ -45,7 +45,6 @@ function index(req, res, next) {
 function showAll(req,res){
     let rideQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
     Ride.find(rideQuery, function (err, rides) {
-        console.log(rides);
         res.render('rides/index', {
             rides,
             user: req.user,
@@ -72,9 +71,9 @@ async function editRide(req,res){
 async function showOne(req,res){
     // i need the id of the ride the user just clicked on
     // i need to take them to the show page of JUST that ride
-    console.log(req.params.id, '<---- showOne')
     try {
-        rideDoc = await Ride.findById(req.params.id)
+        rideDoc = await Ride.findById(req.params.id).populate('user')
+        console.log(rideDoc, '<-- rideDoc')
         res.render('rides/show', {
             ride: rideDoc
         })

@@ -39,15 +39,17 @@
                         </form>
                         <ul class='collection'>
                             <% ride.comments.slice().reverse().forEach(function(comment){ %> 
-                                <li class='collection-item'>
-                                    <!--  if (comment.userId.equals(user._id)) { %>  -->
-                                    <form action="/comments/<%= comment._id %>?_method=DELETE" method='POST'>
-                                        <button type='submit' class='secondary-content btn-small'><i class='material-icons'>delete</i></button>
-                                    </form>
-                                    <!--  } %>  -->
-                                    <p><%= comment.content %></p>
+                                <li class='collection-item avatar'>
+                                    <img src="../images/profilePic.jpeg" alt="" class="circle">
+                                    <span class="title"><%= ride.user.name %></span>
+                                    <%_ if (ride.user.equals(user._id)) { %>
+                                        <form action="/comments/<%= comment._id %>?_method=DELETE" method='POST'>
+                                            <button type='submit' class='secondary-content btn-small'><i class='material-icons'>delete</i></button>
+                                        </form>
+                                    <% }; %>
+                                    <p><%= comment.content %> </p>
                                 </li>
-                            <% }) %> 
+                            <% }); %> 
                         </ul>
                     </div>
                 </div>
