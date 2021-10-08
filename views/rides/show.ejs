@@ -38,7 +38,7 @@
                             <input type="submit">
                         </form>
                         <ul class='collection'>
-                            <% ride.comments.forEach(function(comment){ %> 
+                            <% ride.comments.slice().reverse().forEach(function(comment){ %> 
                                 <li class='collection-item'>
                                     <!--  if (comment.userId.equals(user._id)) { %>  -->
                                     <form action="/comments/<%= comment._id %>?_method=DELETE" method='POST'>

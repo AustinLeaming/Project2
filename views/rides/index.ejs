@@ -22,7 +22,7 @@
     <!-- post area -->
     <div id='scrollFeed' class='full col s10 grey lighten-2'>
       <!-- feed area -->
-        <% rides.forEach(function(ride) {%> 
+        <% rides.slice().reverse().forEach(function(ride) {%> 
             <div class="row">
                 <div class="col s12">
                     <div class="card blue-grey lighten-1">
